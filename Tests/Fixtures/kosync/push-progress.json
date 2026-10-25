@@ -1,0 +1,26 @@
+{
+  "request": {
+    "body": {
+      "device": "iPhone",
+      "device_id": "6B1D2A7E0F3C4E5A9B8C7D6E5F4A3B2C",
+      "document": "0c3b5f1a2e4d6c8b9a7f5e3d1c2b4a69",
+      "percentage": 0.5,
+      "progress": "/body/DocFragment[2]/body/section/p[1]/text().0"
+    },
+    "headers": {
+      "Accept": "application/vnd.koreader.v1+json",
+      "Content-Type": "application/json",
+      "x-auth-key": "5ebe2294ecd0e0f08eab7690d2a6ee69",
+      "x-auth-user": "reader"
+    },
+    "method": "PUT",
+    "path": "/syncs/progress"
+  },
+  "response": {
+    "body": {
+      "document": "0c3b5f1a2e4d6c8b9a7f5e3d1c2b4a69",
+      "timestamp": 1792929600
+    },
+    "status": 200
+  }
+}

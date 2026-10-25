@@ -1,0 +1,15 @@
+{
+  "request": {
+    "headers": {
+      "Accept": "application/vnd.koreader.v1+json",
+      "x-auth-key": "5ebe2294ecd0e0f08eab7690d2a6ee69",
+      "x-auth-user": "reader"
+    },
+    "method": "GET",
+    "path": "/syncs/progress/ffffffffffffffffffffffffffffffff"
+  },
+  "response": {
+    "body": {},
+    "status": 200
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "request": {
+    "body": {
+      "password": "5ebe2294ecd0e0f08eab7690d2a6ee69",
+      "username": "reader"
+    },
+    "headers": {
+      "Accept": "application/vnd.koreader.v1+json",
+      "Content-Type": "application/json"
+    },
+    "method": "POST",
+    "path": "/users/create"
+  },
+  "response": {
+    "body": {
+      "username": "reader"
+    },
+    "status": 201
+  }
+}

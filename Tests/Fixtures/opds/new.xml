@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:opds="http://opds-spec.org/2010/catalog"
+      xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+  <id>urn:fixture:new</id>
+  <title>Recently Added Books</title>
+  <updated>2026-10-20T09:00:00+00:00</updated>
+  <author><name>Calibre-Web</name></author>
+  <link rel="self" href="/opds/new" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
+  <link rel="start" href="/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
+  <link rel="search" href="/opds/osd" type="application/opensearchdescription+xml"/>
+  <link rel="next" href="/opds/new?offset=2" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
+  <opensearch:totalResults>3</opensearch:totalResults>
+  <opensearch:itemsPerPage>2</opensearch:itemsPerPage>
+  <entry>
+    <title>Pride and Prejudice</title>
+    <id>urn:uuid:00000000-0000-4000-8000-000000000001</id>
+    <updated>2026-10-20T09:00:00+00:00</updated>
+    <author><name>Jane Austen</name></author>
+    <dc:language>en</dc:language>
+    <dc:issued>1813</dc:issued>
+    <link rel="http://opds-spec.org/image" href="/opds/cover/1" type="image/png"/>
+    <link rel="http://opds-spec.org/image/thumbnail" href="/opds/cover/1" type="image/png"/>
+    <link rel="http://opds-spec.org/acquisition" href="/opds/download/1/epub/" type="application/epub+zip" length="3288" title="EPUB"/>
+    <link rel="http://opds-spec.org/acquisition" href="/opds/download/1/pdf/" type="application/pdf" length="2282" title="PDF"/>
+  </entry>
+  <entry>
+    <title>Pride and Prejudice (Scanned)</title>
+    <id>urn:uuid:00000000-0000-4000-8000-000000000002</id>
+    <updated>2026-10-19T09:00:00+00:00</updated>
+    <author><name>Jane Austen</name></author>
+    <dc:language>en</dc:language>
+    <dc:issued>1813</dc:issued>
+    <link rel="http://opds-spec.org/image" href="/opds/cover/2" type="image/png"/>
+    <link rel="http://opds-spec.org/image/thumbnail" href="/opds/cover/2" type="image/png"/>
+    <link rel="http://opds-spec.org/acquisition" href="/opds/download/2/pdf/" type="application/pdf" length="5711" title="PDF"/>
+  </entry>
+</feed>

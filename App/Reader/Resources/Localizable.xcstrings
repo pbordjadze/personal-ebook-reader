@@ -1,0 +1,18 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "Add your library’s server to see your books here.": {
+      "comment": "Library screen, under “No Books Yet”, before a server is added.",
+      "extractionState": "manual"
+    },
+    "Library": {
+      "comment": "Title of the first screen, the reader's books.",
+      "extractionState": "manual"
+    },
+    "No Books Yet": {
+      "comment": "Library screen when no server is added.",
+      "extractionState": "manual"
+    }
+  },
+  "version": "1.0"
+}

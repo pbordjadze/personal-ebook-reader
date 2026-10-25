@@ -1,0 +1,22 @@
+{
+  "request": {
+    "headers": {
+      "Accept": "application/vnd.koreader.v1+json",
+      "x-auth-key": "5ebe2294ecd0e0f08eab7690d2a6ee69",
+      "x-auth-user": "reader"
+    },
+    "method": "GET",
+    "path": "/syncs/progress/0c3b5f1a2e4d6c8b9a7f5e3d1c2b4a69"
+  },
+  "response": {
+    "body": {
+      "device": "Kobo",
+      "device_id": "A1B2C3D4E5F60718293A4B5C6D7E8F90",
+      "document": "0c3b5f1a2e4d6c8b9a7f5e3d1c2b4a69",
+      "percentage": 0.5,
+      "progress": "/body/DocFragment[2]/body/section/p[1]/text().0",
+      "timestamp": 1792929600
+    },
+    "status": 200
+  }
+}
