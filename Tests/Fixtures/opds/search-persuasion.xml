@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:opds="http://opds-spec.org/2010/catalog"
+      xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+  <id>urn:fixture:search</id>
+  <title>Search: persuasion</title>
+  <updated>2026-10-20T09:00:00+00:00</updated>
+  <author><name>Calibre-Web</name></author>
+  <link rel="self" href="/opds/search/persuasion" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
+  <link rel="start" href="/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
+  <link rel="search" href="/opds/osd" type="application/opensearchdescription+xml"/>
+  <entry>
+    <title>Persuasion</title>
+    <id>urn:uuid:00000000-0000-4000-8000-000000000003</id>
+    <updated>2026-10-18T09:00:00+00:00</updated>
+    <author><name>Jane Austen</name></author>
+    <dc:language>en</dc:language>
+    <dc:issued>1817</dc:issued>
+    <link rel="http://opds-spec.org/image" href="/opds/cover/3" type="image/png"/>
+    <link rel="http://opds-spec.org/image/thumbnail" href="/opds/cover/3" type="image/png"/>
+    <link rel="http://opds-spec.org/acquisition" href="/opds/download/3/mobi/" type="application/x-mobipocket-ebook" length="280000" title="MOBI"/>
+  </entry>
+</feed>

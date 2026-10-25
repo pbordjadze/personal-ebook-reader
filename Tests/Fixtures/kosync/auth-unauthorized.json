@@ -1,0 +1,18 @@
+{
+  "request": {
+    "headers": {
+      "Accept": "application/vnd.koreader.v1+json",
+      "x-auth-key": "wrong",
+      "x-auth-user": "reader"
+    },
+    "method": "GET",
+    "path": "/users/auth"
+  },
+  "response": {
+    "body": {
+      "code": 2001,
+      "message": "Unauthorized"
+    },
+    "status": 401
+  }
+}
