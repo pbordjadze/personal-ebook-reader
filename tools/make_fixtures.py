@@ -12,12 +12,15 @@ every run:
     whose pages are images with an invisible OCR text layer over them;
   - `covers/`: a cover image per book;
   - `kosync/`: the KOReader sync server's requests and replies, one JSON file each.
-`--check` fails when a committed fixture differs from what this script makes.
+`--check` makes them in a scratch directory and fails when the committed ones differ (a file
+changed, missing or left over).
 """
+import filecmp
 import json
 import os
 import struct
 import sys
+import tempfile
 import zipfile
 import zlib
 
@@ -102,7 +105,7 @@ def root_feed():
 def book_entry(book):
     i = book["id"]
     out = (f"  <entry>\n    <title>{xml_escape(book['title'])}</title>\n"
-           f"    <id>urn:uuid:00000000-0000-4000-8000-00000000000{i}</id>\n"
+           f"    <id>urn:uuid:00000000-0000-4000-8000-{i:012d}</id>\n"
            f"    <updated>{book['updated']}</updated>\n"
            f"    <author><name>{xml_escape(book['author'])}</name></author>\n"
            "    <dc:language>en</dc:language>\n"
@@ -182,6 +185,12 @@ def xhtml(title, paragraphs):
             f"  <body>\n    <section epub:type=\"chapter\">\n    <h1>{title}</h1>\n{body}\n    </section>\n  </body>\n</html>\n")
 
 
+def entry(name):
+    info = zipfile.ZipInfo(name, STAMP)
+    info.external_attr = 0o644 << 16  # rw-r--r--, so an unzipped book is readable
+    return info
+
+
 def epub():
     files = [
         ("META-INF/container.xml",
@@ -221,10 +230,10 @@ def epub():
     path = os.path.join(OUT, FILES[(1, "epub")])
     with zipfile.ZipFile(path, "w") as z:
         # The mimetype comes first and uncompressed (EPUB OCF): readers sniff it at byte 38.
-        z.writestr(zipfile.ZipInfo("mimetype", STAMP), "application/epub+zip", zipfile.ZIP_STORED)
-        z.writestr(zipfile.ZipInfo("OEBPS/cover.png", STAMP), cover(BOOKS[0]["color"]), zipfile.ZIP_STORED)
+        z.writestr(entry("mimetype"), "application/epub+zip", zipfile.ZIP_STORED)
+        z.writestr(entry("OEBPS/cover.png"), cover(BOOKS[0]["color"]), zipfile.ZIP_STORED)
         for name, text in files:
-            z.writestr(zipfile.ZipInfo(name, STAMP), text.encode(), zipfile.ZIP_DEFLATED)
+            z.writestr(entry(name), text.encode(), zipfile.ZIP_DEFLATED)
 
 # ---------------------------------------------------------------- PDF
 
@@ -402,24 +411,30 @@ def write_all():
             f.write("\n")
 
 
-def snapshot():
-    files = {}
-    for base, _, names in os.walk(OUT):
-        for name in names:
-            path = os.path.join(base, name)
-            with open(path, "rb") as f:
-                files[os.path.relpath(path, OUT)] = f.read()
-    return files
+def differences(made, committed):
+    """Paths, relative to the fixtures, that differ between two trees or are in only one."""
+    found = []
+
+    def walk(cmp, prefix):
+        found.extend(prefix + n for n in cmp.left_only + cmp.right_only + cmp.funny_files)
+        found.extend(prefix + n for n in cmp.common_files
+                     if not filecmp.cmp(os.path.join(cmp.left, n), os.path.join(cmp.right, n), shallow=False))
+        for name, sub in cmp.subdirs.items():
+            walk(sub, prefix + name + "/")
+    walk(filecmp.dircmp(made, committed), "")
+    return sorted(found)
 
 
 if __name__ == "__main__":
     if sys.argv[1:] == ["--check"]:
-        before = snapshot()
-        write_all()
-        after = snapshot()
-        changed = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
+        committed = OUT
+        with tempfile.TemporaryDirectory() as scratch:
+            OUT = scratch
+            write_all()
+            changed = differences(scratch, committed)
+            count = sum(len(names) for _, _, names in os.walk(scratch))
         if changed:
             sys.exit("fixtures differ from tools/make_fixtures.py (run it and commit): " + ", ".join(changed))
-        print(f"{len(after)} fixtures match tools/make_fixtures.py")
+        print(f"{count} fixtures match tools/make_fixtures.py")
     else:
         write_all()

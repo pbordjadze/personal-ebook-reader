@@ -20,9 +20,8 @@ if /usr/libexec/PlistBuddy -c "Print UIBackgroundModes" "$PLIST" > /dev/null 2>&
 fi
 # A usage description is a permission the app can ask for; adding one is a privacy change
 # (CLAUDE.md › Privacy), made here, in PRIVACY.md and in ShipHygieneTests together.
-if plutil -convert xml1 -o - "$PLIST" | grep -qE '<key>NS[A-Za-z]+UsageDescription</key>'; then
-  fail "the app asks for a permission: $(plutil -convert xml1 -o - "$PLIST" | grep -oE 'NS[A-Za-z]+UsageDescription' | tr '\n' ' ')"
-fi
+usages="$(plutil -convert xml1 -o - "$PLIST" | grep -oE '<key>NS[A-Za-z]+UsageDescription</key>' || true)"
+[[ -z "$usages" ]] || fail "the app asks for a permission: $(echo "$usages" | tr '\n' ' ')"
 # Books come only from the server the reader names, over HTTPS: no exception to App Transport Security.
 if /usr/libexec/PlistBuddy -c "Print NSAppTransportSecurity" "$PLIST" > /dev/null 2>&1; then
   fail "the app relaxes App Transport Security"

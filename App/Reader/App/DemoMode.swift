@@ -8,8 +8,8 @@ import os
 ///
 /// Scenario names are owned by the views that render them (`RootView`). Scenarios named `*-dark`
 /// are captured in dark appearance and `*-long-text` with every localized string doubled
-/// (`ci/screenshots.sh`); the rest of the name picks the state. Demo books come from the test
-/// fixtures' public-domain texts, never a real library.
+/// (`ci/screenshots.sh`); the rest of the name picks the state. Demo books, when there are any,
+/// come from the test fixtures' public-domain texts, never a real library.
 ///
 /// Debug builds only: the demo types are compiled out of Release builds, so a shipped app has no
 /// launch argument that swaps its content (`ci/check_release.sh` checks).
