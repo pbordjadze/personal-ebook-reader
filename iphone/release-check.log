@@ -1,0 +1,2 @@
+build/release/Build/Products/Release-iphonesimulator/Reader.app/PrivacyInfo.xcprivacy: OK
+Release build ok: privacy manifest, no permissions, no background modes, App Transport Security intact, no Debug-only code
