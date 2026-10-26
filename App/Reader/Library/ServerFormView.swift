@@ -22,6 +22,8 @@ struct ServerFormView: View {
             Form {
                 Section {
                     TextField("Address", text: $address, prompt: Text(verbatim: "https://books.example.com/opds"))
+                        // With a prompt, the field's title would otherwise not be what VoiceOver reads.
+                        .accessibilityLabel("Address")
                         .textContentType(.URL)
                         .keyboardType(.URL)
                         .textInputAutocapitalization(.never)
