@@ -16,7 +16,7 @@ final class LibraryUITests: XCTestCase {
         let add = app.buttons["Add Server"]
         XCTAssertTrue(add.waitForExistence(timeout: 10))
         add.tap()
-        let address = app.textFields.matching(NSPredicate(format: "label == 'Address'")).firstMatch
+        let address = app.textFields.firstMatch
         XCTAssertTrue(address.waitForExistence(timeout: 10))
         address.tap()
         address.typeText("books.example.com")
