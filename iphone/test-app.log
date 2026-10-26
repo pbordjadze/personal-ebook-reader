@@ -1,0 +1,4 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-26 04:30:03.717 I  Reader[15628:c05a] [com.pbordjadze.reader:demo] demo-ready library-empty
+2026-10-26 04:30:15.044 I  Reader[16345:c75e] [com.pbordjadze.reader:demo] demo-ready library-empty
+2026-10-26 04:30:38.225 I  Reader[16755:ccad] [com.pbordjadze.reader:demo] demo-ready catalog-new
