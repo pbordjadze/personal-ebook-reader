@@ -15,6 +15,9 @@ struct CoverView: View {
     let width: CGFloat
     /// Covers grow with Dynamic Type, as the titles beside them do.
     @ScaledMetric private var scale: CGFloat = 1
+
+    /// Up to half again as wide: at the accessibility sizes a large cover would outgrow the screen.
+    private var scaledWidth: CGFloat { width * min(scale, 1.5) }
     @Environment(Library.self) private var library
     @State private var image: UIImage?
 
@@ -31,7 +34,7 @@ struct CoverView: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            .frame(width: width * scale, height: width * scale * 1.5)
+            .frame(width: scaledWidth, height: scaledWidth * 1.5)
             .clipShape(RoundedRectangle(cornerRadius: 4))
             .accessibilityHidden(true)
             .task(id: source) { image = await load() }
