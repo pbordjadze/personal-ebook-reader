@@ -10,10 +10,15 @@ file is the map and the rules.
 - `Package.swift`: `ReaderCore` and `ReaderCoreTests`. The Xcode project builds ReaderCore from
   this package (local reference `..`); its iOS 26 / macOS 15 platforms are a floor.
 - `Sources/ReaderCore`: the portable logic (builds on Linux too; Foundation only). `BookFormat`
-  (the formats the app opens, by media type).
+  (the formats the app opens, by media type), `OPDSFeed` (an OPDS 1.2 page, its entries, paging
+  and search, parsed with `XMLParser`), `CatalogAddress` and `ServerLogin` (what the reader types,
+  HTTPS only; the login sent only to its own server), `Shelf` (the downloaded books).
 - `Tests/ReaderCoreTests` (Swift Testing) and `Tests/Fixtures` (below).
 - `App/`: `Reader.xcodeproj` (synchronized folders: adding files needs no project edit), `Reader/`
-  (`App/` the app, its root view, `Log` and `DemoMode`; `Resources/` the catalogs, privacy
+  (`App/` the app, its root view and routes, `Log` and `DemoMode`; `Library/` the library:
+  `Library` (server, shelf and downloads, in Application Support; the password in the Keychain),
+  `CatalogClient` (URLSession, ephemeral), and its screens; `Demo/` the fixture catalog as a server
+  for demo scenarios and tests, `DemoFiles.swift` generated; `Resources/` the catalogs, privacy
   manifest and assets), `ReaderTests` (Swift Testing), `ReaderUITests` (XCTest),
   `Config/Info.plist` (export compliance, the scene manifest; the rest is the target's
   `INFOPLIST_KEY_*` settings).
@@ -38,8 +43,9 @@ file is the map and the rules.
 public-domain text: an OPDS catalog in Calibre-Web's shape (navigation, two pages of new books,
 OpenSearch, a search result), the books it offers (an EPUB 3, a PDF with a text layer, a scanned
 PDF of page images under an invisible OCR layer, and one book offered only as MOBI), covers, and
-kosync's requests and replies. Change the script, run it, commit both; CI fails when they differ.
-Tests and demo scenarios read these, never a live server.
+kosync's requests and replies. It also writes them into `App/Reader/Demo/DemoFiles.swift`, by
+the path the catalog links them at, for `DemoServer`. Change the script, run it, commit both; CI
+fails when they differ. Tests and demo scenarios read these, never a live server.
 
 ## Privacy (hard rules)
 

@@ -23,7 +23,7 @@ CATALOG = os.path.join(SOURCES, "Resources", "Localizable.xcstrings")
 STRING = r'"((?:[^"\\\n]|\\.)*)"'
 # Initializers and modifiers whose first string literal is a LocalizedStringKey.
 SWIFTUI = re.compile(
-    r'(?<![\w.])(?:Text|Button|Label|Toggle|Section|NavigationLink|Picker|LabeledContent|ContentUnavailableView|Stepper|Annotation)\(\s*'
+    r'(?<![\w.])(?:Text|Button|Label|Toggle|Section|NavigationLink|Picker|LabeledContent|ContentUnavailableView|Stepper|Annotation|TextField|SecureField|ProgressView)\(\s*'
     + STRING
     + r'|\.(?:navigationTitle|accessibilityLabel|accessibilityHint|accessibilityValue|alert|confirmationDialog|help)\(\s*'
     + STRING)
@@ -98,6 +98,7 @@ def self_test():
     source = '''
         Text("Routes")  // Text("Commented out")
         Button("Start Drive") { }
+        TextField("Address", text: $a)
         Label("No Routes Yet", systemImage: "x")
         .navigationTitle("Routes")
         Text(verbatim: "not a key")
@@ -107,7 +108,7 @@ def self_test():
         Text("\\(n) routes")
     '''
     keys, explicit, problems = scan(source)
-    assert keys == {"Routes", "Start Drive", "No Routes Yet", "drive.count", "Plain"}, keys
+    assert keys == {"Routes", "Start Drive", "Address", "No Routes Yet", "drive.count", "Plain"}, keys
     assert explicit == {"drive.count"}, explicit
     assert len(problems) == 1 and "interpolation" in problems[0], problems
     catalog = {"strings": {

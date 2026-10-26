@@ -2,8 +2,8 @@
 # Checks a built Release app for what a shipped build must (and must not) contain.
 #   ci/check_release.sh <path/to/Reader.app>
 # It carries the privacy manifest and the export-compliance answer, asks for no permission, runs
-# nothing in the background, and has none of the Debug-only code (`DemoMode` and its ready
-# marker): those are compiled out by `#if DEBUG`.
+# nothing in the background, and has none of the Debug-only code (`DemoMode`, `DemoServer` and
+# the ready marker): those are compiled out by `#if DEBUG`.
 set -euo pipefail
 APP="$1"
 PLIST="$APP/Info.plist"
@@ -32,7 +32,7 @@ fi
 WORK="$(mktemp -d)"
 strip -S -x -o "$WORK/binary" "$BINARY"
 strings -a "$WORK/binary" > "$WORK/strings.txt"
-for symbol in DemoMode demo-ready; do
+for symbol in DemoMode DemoServer demo-ready; do
   if grep -q "$symbol" "$WORK/strings.txt"; then fail "the Release binary contains $symbol"; fi
 done
 [[ $failed -eq 0 ]] && echo "Release build ok: privacy manifest, no permissions, no background modes, App Transport Security intact, no Debug-only code"

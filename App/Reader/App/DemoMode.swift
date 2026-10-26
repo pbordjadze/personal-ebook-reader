@@ -6,10 +6,11 @@ import os
 ///
 ///     xcrun simctl launch <udid> com.pbordjadze.reader -demo library-empty
 ///
-/// Scenario names are owned by the views that render them (`RootView`). Scenarios named `*-dark`
+/// Scenario names are owned by the views that render them (`LibraryView`, `ServerFormView`,
+/// `CatalogView`, `BookDetailView`, `ShelfBookView`) and set up in `DemoLibrary.swift`. Scenarios named `*-dark`
 /// are captured in dark appearance and `*-long-text` with every localized string doubled
 /// (`ci/screenshots.sh`); the rest of the name picks the state. Demo books, when there are any,
-/// come from the test fixtures' public-domain texts, never a real library.
+/// come from the test fixtures' public-domain texts, never a real library, served by `DemoServer`.
 ///
 /// Debug builds only: the demo types are compiled out of Release builds, so a shipped app has no
 /// launch argument that swaps its content (`ci/check_release.sh` checks).
@@ -23,9 +24,10 @@ enum DemoMode {
     /// this file appears instead of sleeping for a worst-case delay.
     static let readyMarker = FileManager.default.temporaryDirectory.appending(path: "demo-ready")
 
-    /// Signals that the scenario's content is on screen; only animations are still settling.
-    static func markReady() {
-        guard isActive else { return }
+    /// Signals that the scenario's content is on screen; only animations are still settling. Only
+    /// the scenario's own screen counts, not one beneath it in the navigation stack.
+    static func markReady(_ screen: Screen) {
+        guard isActive, screen == self.screen else { return }
         FileManager.default.createFile(atPath: readyMarker.path, contents: Data())
         Log.demo.info("demo-ready \(scenario ?? "", privacy: .public)")
     }
