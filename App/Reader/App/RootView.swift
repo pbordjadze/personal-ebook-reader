@@ -1,21 +1,48 @@
+import ReaderCore
 import SwiftUI
 
-/// The app's first screen: the library. Until a server is added (the library slice) it is empty.
-///
-/// Demo scenarios (Debug builds, `ci/scenarios.txt`): `library-empty` (and its `-dark` and
-/// `-long-text` variants) with no server added.
+/// Where the library's navigation stack can go.
+nonisolated enum Route: Hashable {
+    /// A catalog feed, optionally opened on the results of a search.
+    case catalog(URL, search: String? = nil)
+    case book(OPDSEntry)
+    case shelfBook(ShelfBook)
+}
+
+/// The app's root: the library, and the catalog and books pushed over it.
 struct RootView: View {
-    var body: some View {
-        NavigationStack {
-            ContentUnavailableView {
-                Label("No Books Yet", systemImage: "books.vertical")
-            } description: {
-                Text("Add your library’s server to see your books here.")
-            }
-            .navigationTitle("Library")
-            #if DEBUG
-            .onAppear { DemoMode.markReady() }
-            #endif
+    @State private var library: Library
+    @State private var path: [Route]
+    @State private var showsServerForm: Bool
+
+    init() {
+        #if DEBUG
+        if let demo = DemoMode.setup() {
+            _library = State(initialValue: demo.library)
+            _path = State(initialValue: demo.path)
+            _showsServerForm = State(initialValue: demo.showsServerForm)
+            return
         }
+        #endif
+        _library = State(initialValue: Library.onDevice())
+        _path = State(initialValue: [])
+        _showsServerForm = State(initialValue: false)
+    }
+
+    var body: some View {
+        NavigationStack(path: $path) {
+            LibraryView(showsServerForm: $showsServerForm)
+                .navigationDestination(for: Route.self) { route in
+                    switch route {
+                    case .catalog(let url, let search): CatalogView(url: url, initialSearch: search)
+                    case .book(let entry): BookDetailView(entry: entry)
+                    case .shelfBook(let book): ShelfBookView(book: book)
+                    }
+                }
+        }
+        .sheet(isPresented: $showsServerForm) {
+            ServerFormView()
+        }
+        .environment(library)
     }
 }

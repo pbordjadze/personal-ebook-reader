@@ -4,7 +4,7 @@ import Foundation
 ///
 /// An OPDS acquisition link names its file by media type; a book offered only in other formats
 /// (MOBI, AZW3, CBZ) has no `BookFormat` and isn't offered for download.
-public enum BookFormat: String, Sendable, CaseIterable {
+public enum BookFormat: String, Sendable, Codable, CaseIterable {
     case epub
     case pdf
 

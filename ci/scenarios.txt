@@ -1,3 +1,14 @@
 library-empty@20
 library-empty-dark@20
 library-empty-long-text@20
+library-shelf@20
+library-shelf-dark@20
+library-shelf-long-text@20
+server-form@20
+catalog@20
+catalog-new@20
+catalog-new-dark@20
+catalog-search@20
+book-detail@20
+book-detail-dark@20
+book-detail-long-text@20

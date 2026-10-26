@@ -1,17 +1,285 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "Add Server": {
+      "comment": "Library screen's empty state button, and the server form's title when adding a server.",
+      "extractionState": "manual"
+    },
     "Add your library’s server to see your books here.": {
       "comment": "Library screen, under “No Books Yet”, before a server is added.",
+      "extractionState": "manual"
+    },
+    "Address": {
+      "comment": "Server form: the field for the catalog's web address.",
+      "extractionState": "manual"
+    },
+    "Books on this iPhone stay.": {
+      "comment": "Server form, under Remove Server, and the removal confirmation's message.",
+      "extractionState": "manual"
+    },
+    "Books you download appear here, ready to read without a connection.": {
+      "comment": "Library screen, under the empty “On This iPhone” section.",
+      "extractionState": "manual"
+    },
+    "Browse the Catalog": {
+      "comment": "Library screen: the row that opens the server's catalog.",
+      "extractionState": "manual"
+    },
+    "Cancel": {
+      "comment": "Server form: closes it without saving.",
+      "extractionState": "manual"
+    },
+    "Can’t Load the Catalog": {
+      "comment": "Catalog screen: title when a page or a search fails; the reason follows.",
+      "extractionState": "manual"
+    },
+    "Catalog": {
+      "comment": "Server form: header of the address section.",
+      "extractionState": "manual"
+    },
+    "Checking the Server": {
+      "comment": "Server form: VoiceOver label of the spinner while the address is checked.",
+      "extractionState": "manual"
+    },
+    "Download Failed": {
+      "comment": "Book screen: title of the alert when a download fails; the reason follows.",
+      "extractionState": "manual"
+    },
+    "Leave these empty if the catalog needs no login. The password stays in this iPhone’s Keychain.": {
+      "comment": "Server form: under the user name and password.",
       "extractionState": "manual"
     },
     "Library": {
       "comment": "Title of the first screen, the reader's books.",
       "extractionState": "manual"
     },
+    "Login": {
+      "comment": "Server form: header of the user name and password section.",
+      "extractionState": "manual"
+    },
     "No Books Yet": {
       "comment": "Library screen when no server is added.",
       "extractionState": "manual"
+    },
+    "Nothing Here": {
+      "comment": "Catalog screen: a page with no entries.",
+      "extractionState": "manual"
+    },
+    "OK": {
+      "comment": "Book screen: dismisses the failed-download alert.",
+      "extractionState": "manual"
+    },
+    "On This iPhone": {
+      "comment": "Library screen: header of the downloaded books; also the VoiceOver label of a catalog book's checkmark.",
+      "extractionState": "manual"
+    },
+    "Password": {
+      "comment": "Server form: the password field.",
+      "extractionState": "manual"
+    },
+    "Remove Download": {
+      "comment": "Downloaded book screen: deletes the book's file from the phone (button and confirmation).",
+      "extractionState": "manual"
+    },
+    "Remove Server": {
+      "comment": "Server form: forgets the server and its login (button and confirmation).",
+      "extractionState": "manual"
+    },
+    "Remove the server?": {
+      "comment": "Server form: title of the confirmation before removing the server.",
+      "extractionState": "manual"
+    },
+    "Remove this book from your iPhone?": {
+      "comment": "Downloaded book screen: title of the confirmation before deleting its file.",
+      "extractionState": "manual"
+    },
+    "Save": {
+      "comment": "Server form: checks the address and keeps the server.",
+      "extractionState": "manual"
+    },
+    "Server": {
+      "comment": "Library screen: VoiceOver label of the toolbar button that opens the server form; also the form's title for an added server.",
+      "extractionState": "manual"
+    },
+    "This book isn’t offered as EPUB or PDF, the formats this app opens.": {
+      "comment": "Book screen: the catalog offers this book only in other formats, such as MOBI.",
+      "extractionState": "manual"
+    },
+    "Titles and Authors": {
+      "comment": "Catalog screen: placeholder of the search field.",
+      "extractionState": "manual"
+    },
+    "Try Again": {
+      "comment": "Catalog screen: retries a page or a search that failed.",
+      "extractionState": "manual"
+    },
+    "User Name": {
+      "comment": "Server form: the user name field.",
+      "extractionState": "manual"
+    },
+    "You can download it again from the catalog.": {
+      "comment": "Downloaded book screen: message of the confirmation before deleting its file.",
+      "extractionState": "manual"
+    },
+    "Your library’s OPDS catalog. For Calibre-Web, its address followed by /opds.": {
+      "comment": "Server form: under the address field.",
+      "extractionState": "manual"
+    },
+    "book.download": {
+      "comment": "Book screen: the button that downloads the book. The argument is EPUB or PDF.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download %@"
+          }
+        }
+      }
+    },
+    "book.downloading": {
+      "comment": "Book screen: a download under way. The argument is EPUB or PDF.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloading %@…"
+          }
+        }
+      }
+    },
+    "book.onShelf": {
+      "comment": "Book screen: this format of the book is downloaded. The argument is EPUB or PDF.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ on this iPhone"
+          }
+        }
+      }
+    },
+    "error.address.empty": {
+      "comment": "Server form: Save was tapped with no address.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter your server’s address."
+          }
+        }
+      }
+    },
+    "error.address.https": {
+      "comment": "Server form: the address starts with http://.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server needs an https:// address: books and logins travel only over a secure connection."
+          }
+        }
+      }
+    },
+    "error.address.invalid": {
+      "comment": "Server form: the address can't be read as a URL.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That doesn’t look like a web address."
+          }
+        }
+      }
+    },
+    "error.noSearch": {
+      "comment": "Catalog: the server offers no search.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This catalog can’t be searched."
+          }
+        }
+      }
+    },
+    "error.notCatalog": {
+      "comment": "Server form or catalog: the address answers, but not with an OPDS feed.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "There’s no OPDS catalog at this address."
+          }
+        }
+      }
+    },
+    "error.offline": {
+      "comment": "Catalog or download: no internet connection.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You’re offline. Books on this iPhone still open."
+          }
+        }
+      }
+    },
+    "error.other": {
+      "comment": "Any other failure, such as a book that couldn't be saved. The argument is the system's description.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Something went wrong: %@"
+          }
+        }
+      }
+    },
+    "error.status": {
+      "comment": "Catalog or download: the server's HTTP error. The argument is the status code, such as 500.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server answered with an error (%@)."
+          }
+        }
+      }
+    },
+    "error.unauthorized": {
+      "comment": "Server form, catalog or download: the server answered 401 or 403.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server didn’t accept the user name and password."
+          }
+        }
+      }
+    },
+    "error.unreachable": {
+      "comment": "Server form, catalog or download: the connection failed.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server can’t be reached."
+          }
+        }
+      }
     }
   },
   "version": "1.0"
