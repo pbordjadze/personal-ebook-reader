@@ -1,5 +1,6 @@
 import ReaderCore
 import SwiftUI
+import UIKit
 
 /// Adds the library server, or changes or removes it: its catalog's address and a login. Saving
 /// checks the address answers as an OPDS catalog with that login before keeping it.
@@ -14,6 +15,7 @@ struct ServerFormView: View {
     @State private var checking = false
     @State private var problem: String?
     @State private var confirmsRemoval = false
+    @State private var saving: Task<Void, Never>?
 
     var body: some View {
         NavigationStack {
@@ -60,14 +62,17 @@ struct ServerFormView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", role: .cancel) { dismiss() }
+                    Button("Cancel", role: .cancel) {
+                        saving?.cancel()
+                        dismiss()
+                    }
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     if checking {
                         ProgressView()
                             .accessibilityLabel("Checking the Server")
                     } else {
-                        Button("Save") { Task { await save() } }
+                        Button("Save") { saving = Task { await save() } }
                             .disabled(address.trimmingCharacters(in: .whitespaces).isEmpty)
                     }
                 }
@@ -91,6 +96,7 @@ struct ServerFormView: View {
             DemoMode.markReady(.serverForm)
             #endif
         }
+        .onDisappear { saving?.cancel() }
     }
 
     private func save() async {
@@ -100,6 +106,7 @@ struct ServerFormView: View {
         do {
             try await library.addServer(address: address, username: username, password: password)
             dismiss()
+        } catch is CancellationError {
         } catch {
             problem = message(for: error)
         }

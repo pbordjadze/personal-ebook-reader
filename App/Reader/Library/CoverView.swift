@@ -13,6 +13,8 @@ struct CoverView: View {
 
     let source: Source
     let width: CGFloat
+    /// Covers grow with Dynamic Type, as the titles beside them do.
+    @ScaledMetric private var scale: CGFloat = 1
     @Environment(Library.self) private var library
     @State private var image: UIImage?
 
@@ -29,7 +31,7 @@ struct CoverView: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            .frame(width: width, height: width * 1.5)
+            .frame(width: width * scale, height: width * scale * 1.5)
             .clipShape(RoundedRectangle(cornerRadius: 4))
             .accessibilityHidden(true)
             .task(id: source) { image = await load() }

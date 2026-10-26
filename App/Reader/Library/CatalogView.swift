@@ -72,6 +72,7 @@ struct CatalogView: View {
                 }
                 if let next = shown.nextURL {
                     ProgressView()
+                        .accessibilityLabel("Loading More")
                         .frame(maxWidth: .infinity)
                         .listRowSeparator(.hidden)
                         .task(id: next) { await loadMore(next) }

@@ -13,7 +13,9 @@ final class LibraryUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["-demo", "library-empty"]
         app.launch()
-        app.buttons["Add Server"].tap()
+        let add = app.buttons["Add Server"]
+        XCTAssertTrue(add.waitForExistence(timeout: 10))
+        add.tap()
         let address = app.textFields["Address"]
         XCTAssertTrue(address.waitForExistence(timeout: 10))
         address.tap()
@@ -40,7 +42,7 @@ final class LibraryUITests: XCTestCase {
         app.navigationBars.buttons.element(boundBy: 0).tap()
         XCTAssertTrue(app.navigationBars["Recently Added Books"].waitForExistence(timeout: 10))
         app.navigationBars.buttons.element(boundBy: 0).tap()
-        XCTAssertTrue(app.staticTexts["On This iPhone"].waitForExistence(timeout: 10))
-        XCTAssertTrue(button(app, startingWith: "Pride and Prejudice, ").exists)
+        XCTAssertTrue(app.navigationBars["Library"].waitForExistence(timeout: 10))
+        XCTAssertTrue(button(app, startingWith: "Pride and Prejudice, ").waitForExistence(timeout: 10))
     }
 }

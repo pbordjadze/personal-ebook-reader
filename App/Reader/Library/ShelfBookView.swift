@@ -3,6 +3,8 @@ import SwiftUI
 
 /// A book on this iPhone: what it is, and removing its download. Shown from the shelf, with or
 /// without the server.
+///
+/// Demo scenario: `shelf-book` (also `-dark` and `-long-text`).
 struct ShelfBookView: View {
     let book: ShelfBook
     @Environment(Library.self) private var library
@@ -41,6 +43,9 @@ struct ShelfBookView: View {
         }
         .navigationTitle(book.title)
         .navigationBarTitleDisplayMode(.inline)
+        #if DEBUG
+        .onAppear { DemoMode.markReady(.shelfBook) }
+        #endif
         .confirmationDialog("Remove this book from your iPhone?", isPresented: $confirmsRemoval, titleVisibility: .visible) {
             Button("Remove Download", role: .destructive) {
                 library.delete(book)

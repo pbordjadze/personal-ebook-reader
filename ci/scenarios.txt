@@ -12,3 +12,6 @@ catalog-search@20
 book-detail@20
 book-detail-dark@20
 book-detail-long-text@20
+shelf-book@20
+shelf-book-dark@20
+shelf-book-long-text@20

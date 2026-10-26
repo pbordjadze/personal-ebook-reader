@@ -67,12 +67,13 @@ public struct Shelf: Sendable, Hashable, Codable {
         books.sort(by: Self.newestFirst)
     }
 
-    /// Removes a book; returns the files no other shelf book needs any more.
+    /// Removes a book; returns the files no other shelf book needs any more (the cover, when no
+    /// format of the book is left, whether or not this copy knew of it).
     @discardableResult
     public mutating func remove(_ book: ShelfBook) -> [String] {
         books.removeAll { $0.id == book.id }
         let coverStillUsed = books.contains { $0.entryID == book.entryID }
-        return [book.fileName] + (book.hasCover && !coverStillUsed ? [book.coverFileName] : [])
+        return [book.fileName] + (coverStillUsed ? [] : [book.coverFileName])
     }
 
     private static func newestFirst(_ a: ShelfBook, _ b: ShelfBook) -> Bool {

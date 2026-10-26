@@ -53,6 +53,10 @@
       "comment": "Title of the first screen, the reader's books.",
       "extractionState": "manual"
     },
+    "Loading More": {
+      "comment": "Catalog screen: VoiceOver label of the spinner at the end of the list while the next page loads.",
+      "extractionState": "manual"
+    },
     "Login": {
       "comment": "Server form: header of the user name and password section.",
       "extractionState": "manual"

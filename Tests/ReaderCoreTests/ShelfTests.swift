@@ -26,7 +26,8 @@ struct ShelfTests {
         #expect(shelf.remove(epub) == [epub.fileName])
         #expect(shelf.remove(pdf) == [pdf.fileName, pdf.coverFileName])
         #expect(shelf.books.isEmpty)
-        #expect(Shelf(books: [book("x", at: 1, cover: false)]).removing("x") == ["\(ShelfBook.stem("x")).epub"])
+        let stem = ShelfBook.stem("x")
+        #expect(Shelf(books: [book("x", at: 1, cover: false)]).removing("x") == ["\(stem).epub", "\(stem).cover"])
     }
 
     @Test func fileNamesAreStableAndSafe() {

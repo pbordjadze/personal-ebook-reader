@@ -7,7 +7,7 @@ import os
 ///     xcrun simctl launch <udid> com.pbordjadze.reader -demo library-empty
 ///
 /// Scenario names are owned by the views that render them (`LibraryView`, `ServerFormView`,
-/// `CatalogView`, `BookDetailView`) and set up in `DemoLibrary.swift`. Scenarios named `*-dark`
+/// `CatalogView`, `BookDetailView`, `ShelfBookView`) and set up in `DemoLibrary.swift`. Scenarios named `*-dark`
 /// are captured in dark appearance and `*-long-text` with every localized string doubled
 /// (`ci/screenshots.sh`); the rest of the name picks the state. Demo books, when there are any,
 /// come from the test fixtures' public-domain texts, never a real library, served by `DemoServer`.

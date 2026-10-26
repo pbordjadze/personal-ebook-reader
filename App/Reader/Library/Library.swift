@@ -62,15 +62,18 @@ final class Library {
             let client = CatalogClient(server: url, login: login, transport: transport)
             do {
                 _ = try await client.feed(at: url)
-            } catch CatalogError.unauthorized {
-                throw CatalogError.unauthorized
+            } catch is CancellationError {
+                throw CancellationError()
             } catch {
-                failure = error
+                // A login turned down says more than a later address's 404.
+                if !(failure as? CatalogError == .unauthorized) { failure = error }
                 continue
             }
+            // Cancelled while checking: the form is gone, so nothing is kept.
+            try Task.checkCancellation()
             let server = Server(url: url, username: username)
-            try passwords.setPassword(login?.password)
             try write(JSONEncoder().encode(server), to: serverFile)
+            try passwords.setPassword(login?.password)
             self.server = server
             self.client = client
             covers.removeAllObjects()
@@ -131,7 +134,10 @@ final class Library {
         try? fileManager.removeItem(at: destination)
         try fileManager.moveItem(at: file, to: destination)
         if let size = try? destination.resourceValues(forKeys: [.fileSizeKey]).fileSize { book.length = size }
-        if let cover { try write(cover, to: booksFolder.appending(path: book.coverFileName)) }
+        let coverFile = booksFolder.appending(path: book.coverFileName)
+        if let cover { try write(cover, to: coverFile) }
+        // Another format of the book may have brought the cover already.
+        book.hasCover = fileManager.fileExists(atPath: coverFile.path)
         var shelf = shelf
         shelf.add(book)
         try write(JSONEncoder.shelf.encode(shelf), to: shelfFile)

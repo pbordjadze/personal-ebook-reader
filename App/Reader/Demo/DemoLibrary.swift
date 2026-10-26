@@ -12,9 +12,10 @@ import ReaderCore
 /// - `catalog-new`: a page of books, with covers.
 /// - `catalog-search`: the results of a search.
 /// - `book-detail`: a book offered as EPUB and PDF, its PDF already on the shelf.
+/// - `shelf-book`: a book on the shelf, with no server.
 extension DemoMode {
     enum Screen {
-        case library, serverForm, catalog, book
+        case library, serverForm, catalog, book, shelfBook
     }
 
     struct Setup {
@@ -35,6 +36,7 @@ extension DemoMode {
         case "server-form": .serverForm
         case "catalog", "catalog-new", "catalog-search": .catalog
         case "book-detail": .book
+        case "shelf-book": .shelfBook
         default: .library
         }
     }
@@ -44,7 +46,7 @@ extension DemoMode {
         guard isActive else { return nil }
         let folder = FileManager.default.temporaryDirectory.appending(path: "demo-library")
         try? FileManager.default.removeItem(at: folder)
-        if state != "library-empty" && state != "server-form" {
+        if !["library-empty", "server-form", "shelf-book"].contains(state) {
             try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
             try? JSONEncoder().encode(Server(url: DemoServer.address, username: ""))
                 .write(to: folder.appending(path: "server.json"))
@@ -70,6 +72,11 @@ extension DemoMode {
             if let book = books.first {
                 shelve(book, as: .pdf, into: library, minutesAgo: 0)
                 setup.path = [.book(book)]
+            }
+        case "shelf-book":
+            if let book = books.first {
+                shelve(book, as: .epub, into: library, minutesAgo: 0)
+                setup.path = library.shelf.books.first.map { [.shelfBook($0)] } ?? []
             }
         default:
             break
