@@ -121,15 +121,16 @@ nonisolated struct URLSessionTransport: CatalogTransport {
     }
 }
 
+// The completion-handler form: the async one's Objective-C thunk crashes the Swift 6.3 compiler.
 private nonisolated final class RedirectGuard: NSObject, URLSessionTaskDelegate {
     func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse,
-                    newRequest request: URLRequest) async -> URLRequest? {
-        guard let target = request.url, target.scheme?.lowercased() == "https" else { return nil }
+                    newRequest request: URLRequest, completionHandler: @escaping @Sendable (URLRequest?) -> Void) {
+        guard let target = request.url, target.scheme?.lowercased() == "https" else { return completionHandler(nil) }
         guard let origin = task.originalRequest?.url, CatalogAddress.isSameOrigin(target, as: origin) else {
             var request = request
             request.setValue(nil, forHTTPHeaderField: "Authorization")
-            return request
+            return completionHandler(request)
         }
-        return request
+        completionHandler(request)
     }
 }
