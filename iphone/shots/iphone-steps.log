@@ -1,0 +1,53 @@
+04:13:49 iphone: booted
+04:14:03 iphone: installed
+04:14:07 iphone: launch library-empty: com.pbordjadze.reader: 13743 
+04:14:08 iphone: library-empty ready after 1 s
+04:14:11 iphone: captured library-empty
+04:14:13 iphone: launch library-empty-dark: com.pbordjadze.reader: 13826 
+04:14:15 iphone: library-empty-dark ready after 2 s
+04:14:18 iphone: captured library-empty-dark
+04:14:20 iphone: launch library-empty-long-text: com.pbordjadze.reader: 14038 
+04:14:20 iphone: library-empty-long-text ready after 0 s
+04:14:23 iphone: captured library-empty-long-text
+04:14:24 iphone: launch library-shelf: com.pbordjadze.reader: 14551 
+04:14:24 iphone: library-shelf ready after 0 s
+04:14:26 iphone: captured library-shelf
+04:14:28 iphone: launch library-shelf-dark: com.pbordjadze.reader: 14602 
+04:14:28 iphone: library-shelf-dark ready after 0 s
+04:14:31 iphone: captured library-shelf-dark
+04:14:33 iphone: launch library-shelf-long-text: com.pbordjadze.reader: 14642 
+04:14:33 iphone: library-shelf-long-text ready after 0 s
+04:14:36 iphone: captured library-shelf-long-text
+04:14:38 iphone: launch server-form: com.pbordjadze.reader: 15390 
+04:14:38 iphone: server-form ready after 0 s
+04:14:41 iphone: captured server-form
+04:14:42 iphone: launch catalog: com.pbordjadze.reader: 15690 
+04:14:43 iphone: catalog ready after 1 s
+04:14:45 iphone: captured catalog
+04:14:46 iphone: launch catalog-new: com.pbordjadze.reader: 15814 
+04:14:47 iphone: catalog-new ready after 1 s
+04:14:49 iphone: captured catalog-new
+04:14:52 iphone: launch catalog-new-dark: com.pbordjadze.reader: 16503 
+04:14:53 iphone: catalog-new-dark ready after 1 s
+04:14:55 iphone: captured catalog-new-dark
+04:14:57 iphone: launch catalog-search: com.pbordjadze.reader: 16542 
+04:14:58 iphone: catalog-search ready after 1 s
+04:15:01 iphone: captured catalog-search
+04:15:02 iphone: launch book-detail: com.pbordjadze.reader: 16997 
+04:15:02 iphone: book-detail ready after 0 s
+04:15:05 iphone: captured book-detail
+04:15:08 iphone: launch book-detail-dark: com.pbordjadze.reader: 17267 
+04:15:08 iphone: book-detail-dark ready after 0 s
+04:15:10 iphone: captured book-detail-dark
+04:15:12 iphone: launch book-detail-long-text: com.pbordjadze.reader: 17305 
+04:15:12 iphone: book-detail-long-text ready after 0 s
+04:15:15 iphone: captured book-detail-long-text
+04:15:16 iphone: launch shelf-book: com.pbordjadze.reader: 17712 
+04:15:16 iphone: shelf-book ready after 0 s
+04:15:18 iphone: captured shelf-book
+04:15:20 iphone: launch shelf-book-dark: com.pbordjadze.reader: 18033 
+04:15:20 iphone: shelf-book-dark ready after 0 s
+04:15:23 iphone: captured shelf-book-dark
+04:15:26 iphone: launch shelf-book-long-text: com.pbordjadze.reader: 18070 
+04:15:27 iphone: shelf-book-long-text ready after 1 s
+04:15:30 iphone: captured shelf-book-long-text

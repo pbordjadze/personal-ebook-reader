@@ -1,0 +1,93 @@
+Building for debugging...
+Build complete! (12.15s)
+Test Suite 'All tests' started at 2026-10-26 04:09:08.021
+Test Suite 'debug.xctest' started at 2026-10-26 04:09:08.022
+Test Suite 'debug.xctest' passed at 2026-10-26 04:09:08.022
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.0 (0.0) seconds
+Test Suite 'All tests' passed at 2026-10-26 04:09:08.023
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.0 (0.0) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: x86_64-unknown-linux-gnu
+◇ Suite BookFormatTests started.
+◇ Suite OPDSFeedTests started.
+◇ Suite FixtureTests started.
+◇ Suite ShelfTests started.
+◇ Suite CatalogServerTests started.
+◇ Test roundTripsItsOwnMediaType() started.
+◇ Test optionalTemplateParametersAreLeftEmpty() started.
+◇ Test turnsDownTheRest(mediaType:) started.
+◇ Test readsTheMediaTypesTheAppOpens(mediaType:format:) started.
+◇ Test aBookOfferedOnlyAsMOBIHasNothingToDownload() started.
+◇ Test openSearchDescriptionGivesTheTemplate() started.
+◇ Test epubStartsWithItsUncompressedMediaType() started.
+◇ Test somethingElseIsNotAFeed() started.
+◇ Test acquisitionFeedListsBooksWithCoversAndFiles() started.
+◇ Test aSearchTemplateInTheFeedIsUsedDirectly() started.
+◇ Test descriptionsLoseTheirMarkupAndEveryEntryHasAnID() started.
+◇ Test kosyncExchangesHaveARequestAndAReply(name:) started.
+◇ Test navigationFeedLeadsToOtherFeeds() started.
+◇ Test pdfsAreWhole(path:) started.
+◇ Test acquisitionLinksPointAtTheBooks() started.
+◇ Test catalogFeedsAreWellFormed(path:) started.
+◇ Test removingTheLastFormatAlsoRemovesTheCover() started.
+◇ Test theLoginGoesOnlyToTheSameServer() started.
+◇ Test basicAuthorization() started.
+◇ Test aBareHostAlsoTriesCalibreWebsPath() started.
+◇ Test aPathIsTakenAsTyped() started.
+◇ Test fileNamesAreStableAndSafe() started.
+◇ Test onlyHTTPS() started.
+◇ Test survivesARoundTrip() started.
+◇ Test newestFirstAndOneCopyPerFormat() started.
+◇ Test case passing 1 argument mediaType → "application/vnd.comicbook+zip" to turnsDownTheRest(mediaType:) started.
+◇ Test case passing 1 argument mediaType → "application/x-mobipocket-ebook" to turnsDownTheRest(mediaType:) started.
+◇ Test case passing 1 argument mediaType → "" to turnsDownTheRest(mediaType:) started.
+◇ Test case passing 1 argument mediaType → "application/epub" to turnsDownTheRest(mediaType:) started.
+◇ Test case passing 2 arguments mediaType → "Application/EPUB+zip", format → .epub to readsTheMediaTypesTheAppOpens(mediaType:format:) started.
+◇ Test case passing 2 arguments mediaType → "application/epub+zip", format → .epub to readsTheMediaTypesTheAppOpens(mediaType:format:) started.
+◇ Test case passing 2 arguments mediaType → "application/pdf", format → .pdf to readsTheMediaTypesTheAppOpens(mediaType:format:) started.
+◇ Test case passing 2 arguments mediaType → "application/pdf; charset=binary", format → .pdf to readsTheMediaTypesTheAppOpens(mediaType:format:) started.
+◇ Test case passing 1 argument name → "register" to kosyncExchangesHaveARequestAndAReply(name:) started.
+◇ Test case passing 1 argument name → "auth" to kosyncExchangesHaveARequestAndAReply(name:) started.
+◇ Test case passing 1 argument name → "auth-unauthorized" to kosyncExchangesHaveARequestAndAReply(name:) started.
+◇ Test case passing 1 argument name → "push-progress" to kosyncExchangesHaveARequestAndAReply(name:) started.
+◇ Test case passing 1 argument name → "pull-progress" to kosyncExchangesHaveARequestAndAReply(name:) started.
+◇ Test case passing 1 argument name → "pull-progress-none" to kosyncExchangesHaveARequestAndAReply(name:) started.
+◇ Test case passing 1 argument path → "books/pride-and-prejudice.pdf" to pdfsAreWhole(path:) started.
+◇ Test case passing 1 argument path → "books/pride-and-prejudice-scanned.pdf" to pdfsAreWhole(path:) started.
+◇ Test case passing 1 argument path → "opds/root.xml" to catalogFeedsAreWellFormed(path:) started.
+◇ Test case passing 1 argument path → "opds/new.xml" to catalogFeedsAreWellFormed(path:) started.
+◇ Test case passing 1 argument path → "opds/new-2.xml" to catalogFeedsAreWellFormed(path:) started.
+◇ Test case passing 1 argument path → "opds/search-persuasion.xml" to catalogFeedsAreWellFormed(path:) started.
+◇ Test case passing 1 argument path → "opds/opensearch.xml" to catalogFeedsAreWellFormed(path:) started.
+✔ Test roundTripsItsOwnMediaType() passed after 0.004 seconds.
+✔ Test turnsDownTheRest(mediaType:) with 4 test cases passed after 0.004 seconds.
+✔ Test optionalTemplateParametersAreLeftEmpty() passed after 0.004 seconds.
+✔ Test epubStartsWithItsUncompressedMediaType() passed after 0.004 seconds.
+✔ Test readsTheMediaTypesTheAppOpens(mediaType:format:) with 4 test cases passed after 0.004 seconds.
+✔ Test openSearchDescriptionGivesTheTemplate() passed after 0.004 seconds.
+✔ Test aSearchTemplateInTheFeedIsUsedDirectly() passed after 0.004 seconds.
+✔ Test aBookOfferedOnlyAsMOBIHasNothingToDownload() passed after 0.004 seconds.
+✔ Test somethingElseIsNotAFeed() passed after 0.004 seconds.
+✔ Test descriptionsLoseTheirMarkupAndEveryEntryHasAnID() passed after 0.004 seconds.
+✔ Test kosyncExchangesHaveARequestAndAReply(name:) with 6 test cases passed after 0.004 seconds.
+✔ Test acquisitionFeedListsBooksWithCoversAndFiles() passed after 0.004 seconds.
+✔ Test navigationFeedLeadsToOtherFeeds() passed after 0.004 seconds.
+✔ Test pdfsAreWhole(path:) with 2 test cases passed after 0.004 seconds.
+✔ Test basicAuthorization() passed after 0.004 seconds.
+✔ Test removingTheLastFormatAlsoRemovesTheCover() passed after 0.004 seconds.
+✔ Test theLoginGoesOnlyToTheSameServer() passed after 0.004 seconds.
+✔ Test catalogFeedsAreWellFormed(path:) with 5 test cases passed after 0.004 seconds.
+✔ Test fileNamesAreStableAndSafe() passed after 0.004 seconds.
+✔ Test acquisitionLinksPointAtTheBooks() passed after 0.004 seconds.
+✔ Test aPathIsTakenAsTyped() passed after 0.004 seconds.
+✔ Test aBareHostAlsoTriesCalibreWebsPath() passed after 0.004 seconds.
+✔ Test newestFirstAndOneCopyPerFormat() passed after 0.004 seconds.
+✔ Test onlyHTTPS() passed after 0.004 seconds.
+✔ Suite BookFormatTests passed after 0.005 seconds.
+✔ Suite FixtureTests passed after 0.005 seconds.
+✔ Suite OPDSFeedTests passed after 0.005 seconds.
+✔ Test survivesARoundTrip() passed after 0.004 seconds.
+✔ Suite CatalogServerTests passed after 0.005 seconds.
+✔ Suite ShelfTests passed after 0.005 seconds.
+✔ Test run with 25 tests in 5 suites passed after 0.006 seconds.
